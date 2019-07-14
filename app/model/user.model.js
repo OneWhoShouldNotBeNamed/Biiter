@@ -12,5 +12,5 @@ module.exports = (sequelize, Sequelize) => {
      createdAt: Sequelize.DATE
     });
     
-    return User;
+    return User;    
   }

@@ -2,15 +2,15 @@ module.exports = function(app) {
  
     const user = require('../controller/user.controller.js');
  
-    // Create a new Customer
-    app.post('/api/register', user.register);
- /*
-    // Retrieve all Customer
-    app.get('/api/customers', customers.findAll);
+    // Register New users
+    app.post('/user/register', user.register);
  
-    // Retrieve a single Customer by Id
-    app.get('/api/customer/:customerId', customers.findById);
-  
+    // Add Beats
+    app.get('/user/addbeat', user.addBeats);
+ 
+     //Retrieve all beats
+    app.get('/user/', user.allBeats);
+  /*
   // Retrieve Customers Age
     app.get('/api/customers/age/:age', customers.findByAge);
  

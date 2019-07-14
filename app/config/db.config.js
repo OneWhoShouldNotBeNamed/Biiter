@@ -20,7 +20,9 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
  
 //Models/tables
-//db.customers = require('../model/customer.model.js')(sequelize, Sequelize);
  db.user=require('../model/user.model.js')(sequelize, Sequelize);
- 
+ db.Beats=require('../model/beats.model.js')(sequelize, Sequelize);
+ db.follwers=require('../model/followers.model.js')(sequelize, Sequelize);
+ db.status=require('../model/status.model.js')(sequelize, Sequelize);
+
 module.exports = db;

@@ -1,75 +1,57 @@
 const db = require('../config/db.config.js');
 const User = db.user;
- 
-// Post a Customer
+ const Beats= db.Beats;
+
+
+// Register User
 exports.register = (req, res) => {  
   // Save to MySQL database
   User.create({  
     name: req.body.name,
     hash:req.body.pass
   }).then(user => {    
-    // Send created customer to client
+  
+  // Send created user to client
     res.send(user);
   }).catch(err => {
     res.status(500).send("Error -> " + err);
   })
 };
- /*
-// FETCH all Customers
-exports.findAll = (req, res) => {
-  Customer.findAll().then(customers => {
-    // Send all customers to Client
-    res.send(customers);
+//Add Beats
+exports.addBeats = (req, res) => {  
+    Beats.create({  
+    beat:req.body.beat,
+    uid:req.body.uid
+  }).then(beat => {    
+    // Send created beat to client
+    res.send(beat);
   }).catch(err => {
     res.status(500).send("Error -> " + err);
   })
 };
- 
-// Find a Customer by Id
-exports.findById = (req, res) => {  
-  Customer.findById(req.params.customerId).then(customer => {
-    res.send(customer);
+
+// FETCH all Beats
+exports.allBeats = (req, res) => {
+  Beats.findAll().then(beats => {
+    // Send all Beats to Client
+    res.send(beats);
   }).catch(err => {
     res.status(500).send("Error -> " + err);
   })
-};
- 
-// Find Customers by Age
-exports.findByAge = (req, res) => {
-  Customer.findAll({
+}; 
+// Find user by name
+exports.findByName = (req, res) => {
+  User.findAll({
     where: {
-      age: req.params.age
-    }
+      name: req.body.name
+        }
   }).then(
-    customers => {
-      res.send(customers)
+    user => {
+      res.send(user)
     }
   ).catch(err => {
     res.status(500).send("Error -> " + err);
   })
 };
  
-// Update a Customer
-exports.update = (req, res) => {
-  var customer = req.body;
-  const id = req.params.customerId;
-  Customer.update( { name: req.body.name, age: req.body.age, active: req.body.active }, 
-            { where: {id: req.params.customerId} }
-           ).then(() => {
-            res.status(200).send(customer);
-           }).catch(err => {
-            res.status(500).send("Error -> " + err);
-           })
-};
- 
-// Delete a Customer by Id
-exports.delete = (req, res) => {
-  const id = req.params.customerId;
-  Customer.destroy({
-    where: { id: id }
-  }).then(() => {
-    res.status(200).send('Customer has been deleted!');
-  }).catch(err => {
-    res.status(500).send("Error -> " + err);
-  });
-};*/
+
