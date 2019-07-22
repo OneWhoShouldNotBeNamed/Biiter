@@ -6,17 +6,22 @@ module.exports = function(app) {
     app.post('/user/register', user.register);
  
     // Add Beats
-    app.get('/user/addbeat', user.addBeats);
+    app.post('/user/addbeat', user.addBeats);
  
-     //Retrieve all beats
+    //Retrieve all beats
     app.get('/user/', user.allBeats);
-  /*
-  // Retrieve Customers Age
-    app.get('/api/customers/age/:age', customers.findByAge);
- 
-    // Update a Customer with Id
-    app.put('/api/customer/:customerId', customers.update);
- 
-    // Delete a Customer with Id
-    app.delete('/api/customer/:customerId', customers.delete);*/
+
+    //User Login
+    app.post('/user/login', user.login);
+    
+    // Find the Users based on Name
+     app.post('/user/find', user.findByName);
+    
+  /*  // followUser
+    app.post('/user/follow', user.followUser);
+
+    // followUser
+    app.post('/user/unfollow', user.unfollowUser);*/
+    
+   
 }

@@ -9,8 +9,9 @@ module.exports = (sequelize, Sequelize) => {
       hash: {
       type: Sequelize.STRING
       },
-     createdAt: Sequelize.DATE
-    });
+      CreatedAt:Sequelize.DATE
+     }
+    );
     
     return User;    
   }
